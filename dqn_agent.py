@@ -86,6 +86,7 @@ class DQNAgent:
 
         # sample random minibatch
         minibatch_size = min(len(self.D), self.minibatch_size)
+        #print(minibatch_size)
         minibatch_indexes = np.random.randint(0, len(self.D), minibatch_size)
 
         for j in minibatch_indexes:
