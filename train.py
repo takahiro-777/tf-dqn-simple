@@ -22,12 +22,16 @@ if __name__ == "__main__":
         Q_max = 0.0
         env.reset()
         state_t_1, reward_t, terminal = env.observe()
+        #print(terminal)
 
         while not terminal:
             state_t = state_t_1
+            #print(state_t)  #8*8_array
 
             # execute action in environment
             action_t = agent.select_action(state_t, agent.exploration)
+            #print(action_t)
+            #print(agent.exploration)
             env.execute_action(action_t)
 
             # observe environment

@@ -105,6 +105,7 @@ class DQNAgent:
             y_minibatch.append(y_j)
 
         # training
+        #print(y_minibatch[0])
         self.sess.run(self.training, feed_dict={self.x: state_minibatch, self.y_: y_minibatch})
 
         # for log
