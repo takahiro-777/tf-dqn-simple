@@ -6,7 +6,7 @@ from dqn_agent import DQNAgent
 
 if __name__ == "__main__":
     # parameters
-    n_epochs = 1000
+    n_epochs = 3000
 
     # environment, agent
     env = CatchBall()
@@ -16,8 +16,8 @@ if __name__ == "__main__":
     win = 0
 
     for e in range(n_epochs):
-        explore = 1 - e/1020.0
-        #print(explore)
+        explore = np.array([np.exp(-e/500.0),0.05]).max()
+        print(explore)
         # reset
         frame = 0
         loss = 0.0
