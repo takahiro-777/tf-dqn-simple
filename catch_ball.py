@@ -6,8 +6,8 @@ class CatchBall:
     def __init__(self):
         # parameters
         self.name = os.path.splitext(os.path.basename(__file__))[0]
-        self.screen_n_rows = 8
-        self.screen_n_cols = 8
+        self.screen_n_rows = 16
+        self.screen_n_cols = 16
         self.player_length = 1
         self.enable_actions = (0, 1, 2)
         self.frame_rate = 5
