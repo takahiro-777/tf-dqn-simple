@@ -6,7 +6,7 @@ from dqn_agent import DQNAgent
 
 if __name__ == "__main__":
     # parameters
-    n_epochs = 1000
+    n_epochs = 3000
 
     # environment, agent
     env = CatchBall()
@@ -16,6 +16,8 @@ if __name__ == "__main__":
     win = 0
 
     for e in range(n_epochs):
+        explore = np.array([np.exp(-e/500.0),0.05]).max()
+        print(explore)
         # reset
         frame = 0
         loss = 0.0
@@ -27,7 +29,8 @@ if __name__ == "__main__":
             state_t = state_t_1
 
             # execute action in environment
-            action_t = agent.select_action(state_t, agent.exploration)
+            #action_t = agent.select_action(state_t, agent.exploration)
+            action_t = agent.select_action(state_t, explore)
             env.execute_action(action_t)
 
             # observe environment

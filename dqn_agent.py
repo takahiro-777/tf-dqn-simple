@@ -45,10 +45,15 @@ class DQNAgent:
         b_fc1 = tf.Variable(tf.zeros([16*16]))
         h_fc1 = tf.nn.relu(tf.matmul(x_flat, W_fc1) + b_fc1)
 
+        # fully connected layer (32)
+        W_fc2 = tf.Variable(tf.truncated_normal([16*16, 16*16], stddev=0.01))
+        b_fc2 = tf.Variable(tf.zeros([16*16]))
+        h_fc2 = tf.nn.relu(tf.matmul(h_fc1, W_fc2) + b_fc2)
+
         # output layer (n_actions)
         W_out = tf.Variable(tf.truncated_normal([16*16, self.n_actions], stddev=0.01))
         b_out = tf.Variable(tf.zeros([self.n_actions]))
-        self.y = tf.matmul(h_fc1, W_out) + b_out
+        self.y = tf.matmul(h_fc2, W_out) + b_out
 
         # loss function
         self.y_ = tf.placeholder(tf.float32, [None, self.n_actions])
